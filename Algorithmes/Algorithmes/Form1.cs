@@ -152,20 +152,25 @@ namespace Algorithmes
 
         private void clear()
         {
-            if (AlgorithmType.SelectedIndex == 0)
-            {
-                genetic.clear();
-            }
-            else
-            {
-                Ant.ClearAnt();
-            }
-            ShowSolve.Text = "";
-            ShowValue.Text = "";
-            progressBar_OfAnt.Position = 0;
-            numberOfrepet.Text = "";
-            DrawPath.Refresh();
-            draw();
+            try {
+
+                if (AlgorithmType.SelectedIndex == 0)
+                {
+                    genetic.clear();
+                }
+                else
+                {
+                    Ant.ClearAnt();
+                }
+                ShowSolve.Text = "";
+                ShowValue.Text = "";
+                progressBar_OfAnt.Position = 0;
+                numberOfrepet.Text = "";
+                DrawPath.Refresh();
+                draw();
+
+            } catch { }
+            
         }
 
 
@@ -240,6 +245,8 @@ namespace Algorithmes
                 labelControl3.Text = "Number of Solves:";
                 labelControl4.Text = "Crosswise:";
                 labelControl5.Text = "Mutation:";
+                TextOfAlfa.Text = "80";
+                TextOfBeta.Text = "20";
             }
             else
             {
@@ -247,10 +254,14 @@ namespace Algorithmes
                 labelControl3.Text = "Number Of Ant:";
                 labelControl4.Text = "Alfa:";
                 labelControl5.Text = "Beta:";
+                TextOfAlfa.Text = "3";
+                TextOfBeta.Text = "3";
             }
 
-            TextOfP.Enabled = antEnable;
-            TextPheromone.Enabled = antEnable;
+            TextOfP.Visible = antEnable;
+            TextPheromone.Visible = antEnable;
+            labelControl6.Visible = antEnable;
+            labelControl7.Visible = antEnable;
         }
 
         private void Form1_Load(object sender, EventArgs e)
